@@ -1,0 +1,19 @@
+{
+  "name": "whois-checker",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+        "build-container": "docker build -t whois-checker ."
+  },
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "hono": "^4.7.10",
+    "whoiser": "^2.0.0-beta.5"
+  }
+}
