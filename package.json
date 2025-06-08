@@ -16,6 +16,6 @@
     "@hono/swagger-ui": "^0.5.1",
     "@hono/zod-openapi": "^0.19.8",
     "hono": "^4.7.10",
-    "whoiser": "^2.0.0-beta.5"
+    "whois-parsed": "^1.0.14"
   }
 }
