@@ -1,6 +1,6 @@
 {
   "name": "whois-checker",
-  "module": "index.ts",
+  "module": "src/index.ts",
   "type": "module",
   "scripts": {
     "build-container": "docker build -t whois-checker ."
@@ -13,8 +13,6 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@hono/swagger-ui": "^0.5.1",
-    "@hono/zod-openapi": "^0.19.8",
     "hono": "^4.7.10",
     "whois-parsed": "^1.0.14"
   }

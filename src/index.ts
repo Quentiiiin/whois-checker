@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
-const whois = require('whois-parsed');
+import { hasDnsRecord } from './fetch-dns';
+import { isWhoisAvailable } from './fetch-whois';
 
 const app = new Hono();
 
@@ -31,10 +32,14 @@ app.get('/', async (c) => {
   const results = await Promise.all(
     validDomains.map(async (d) => {
       try {
-        const res = await whois.lookup(d);
-        return { domain: d, available: res.isAvailable };
+        const hasRecord = await hasDnsRecord(d);
+        if (hasRecord) {
+          return { domain: d, available: false };
+        }
+        const whoisAvailable = await isWhoisAvailable(d);
+        return { domain: d, available: whoisAvailable };
       } catch (error) {
-        return { domain: d, available: null, error: 'Failed to check domain' };
+        return { domain: d, available: false };
       }
     })
   );
